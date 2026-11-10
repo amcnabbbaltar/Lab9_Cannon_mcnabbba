@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class Target here.
  * 
@@ -14,6 +14,24 @@ public class Target extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        List<CannonBall> balls = getWorld().getObjects(CannonBall.class);// Add your action code here.
+        for( int i = 0; i<balls.size();i++)
+        {
+            CannonBall ball = balls.get(i);
+            
+            Vector2D  targetToBall = new Vector2D( ball.getX() - getX(), ball.getY() - getY());
+            double distance = targetToBall.magnitude();
+            
+            double ballRadius = ball.getImage().getHeight()/2;
+            double targetRadius = getImage().getHeight()/2;
+            
+            if (distance < ballRadius + targetRadius)
+            {
+                
+                setImage("targetDestroyed.png");
+                Greenfoot.playSound("explosion.wav");
+            }
+            
+        }
     }
 }
