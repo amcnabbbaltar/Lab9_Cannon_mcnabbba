@@ -17,7 +17,7 @@ public class CannonBall extends Actor
     public CannonBall()
     {
         position = null;
-        velocity = new Vector2D(0.0, 0.0);
+        velocity = new Vector2D(0.0, 0.0); 
         acceleration = new Vector2D(0.0, GRAVITY);
     }
     
